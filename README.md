@@ -133,6 +133,60 @@ public class HomeController {
     }
 }
 ```
+### script.js (inside src/main/resources/static/);
+```
+function showMessage() {
+    alert("Button clicked! Spring Boot MVC is working!");
+}
+```
+
+```
+function changeText(){
+    document.querySelector("h1").innerText = "Text Changed Successfully!"
+}
+```
+### style.css(inside src/main/resources/static/);
+```
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+h1 {
+    color: white;
+    font-size: 40px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #333;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #333;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+```
 ### index.html (View – inside src/main/resources/templates/):
 ```html
 <!DOCTYPE html>
