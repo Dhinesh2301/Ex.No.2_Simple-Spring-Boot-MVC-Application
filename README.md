@@ -168,5 +168,7 @@ server.port=4000
 <img width="1899" height="539" alt="image" src="https://github.com/user-attachments/assets/f1cb2d96-4cb3-4561-be4c-09ea350db959" />
 <img width="1915" height="498" alt="image" src="https://github.com/user-attachments/assets/2b76aa8f-fb27-4d7c-bffa-dc02df873627" />
 
+### Result:
+A simple Spring Boot MVC application was successfully developed and executed, displaying dynamic content using Thymeleaf with interactive UI functionality.
 
 
