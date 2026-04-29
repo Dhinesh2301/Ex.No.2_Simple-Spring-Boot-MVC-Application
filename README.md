@@ -4,50 +4,19 @@
 To develop a Simple Spring Boot MVC (Model-View-Controller) Application that uses a Controller to handle HTTP requests, a Model to pass data, and a View (Thymeleaf) to render dynamic HTML pages.
 
 ## ALGORITHM:
-Create a New Spring Boot Project:
-
-Use Spring Initializr
-
-Add dependencies:
-
-Spring Web
-
-Thymeleaf
-
-Set Up Project Structure:
-
-Create the main class annotated with @SpringBootApplication
-
-Create a Controller class using @Controller
-
-Add HTML templates under src/main/resources/templates
-
-Create a Controller:
-
-Define a method to handle HTTP GET requests using @GetMapping
-
-Return a view name (HTML page name) from the controller
-
-Pass data to the view using Model object
-
-Create a Model (Optional):
-
-Define a simple POJO class if you need to pass structured data to the view
-
-Create View Pages (HTML using Thymeleaf):
-
-Create an HTML file inside the templates folder
-
-Use Thymeleaf syntax (e.g., ${name}) to render dynamic content
-
-Run the Application:
-
-Run the Spring Boot application from your IDE or command line
-
-Access the Application:
-
-Open a browser and navigate to http://localhost:8080/
+1. Create a project using Spring Initializr  
+2. Add dependencies: Spring Web, Thymeleaf  
+3. Set up the main application class  
+4. Create a controller to handle requests  
+5. Define a method for the home page  
+6. Pass data from controller to view  
+7. Create HTML file in `templates` folder  
+8. Add basic CSS styles (inside HTML or separate file)  
+9. Use Thymeleaf to display data  
+10. Run the application  
+11. Open http://localhost:8080/ in browser  
 ## PROGRAM
+```
 spring-mvc-demo/
 ├── src/
 │   └── main/
@@ -60,44 +29,78 @@ spring-mvc-demo/
 │           │   └── index.html
 │           └── application.properties
 ├── pom.xml
-
+```
 ### pom.xml :
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.0.6</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>MVC-Application</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name/>
+	<description/>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>25</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc</artifactId>
+		</dependency>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
-    <groupId>com.example</groupId>
-    <artifactId>spring-mvc-demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>Spring MVC Demo</name>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.2</version>
-    </parent>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
-    <dependencies>
-        <!-- Spring Web -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
-        <!-- Thymeleaf for View Rendering -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-    </dependencies>
 </project>
 
+```
 ### MvcApplication.java (Main Class):
-
-package com.example.mvc;
+```java
+package com.example.MVC_Application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -109,9 +112,11 @@ public class MvcApplication {
     }
 }
 
+```
 ### HomeController.java (Controller):
+```java
+package com.example.MVC_Application;
 
-package com.example.mvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -122,23 +127,46 @@ public class HomeController {
 
     @GetMapping("/")
     public String homePage(Model model) {
-        model.addAttribute("message", "Welcome to Spring Boot MVC!");
-        return "index";  // refers to index.html in templates folder
+        System.out.println("Controller is called"); // DEBUG
+        model.addAttribute("message", "Welcome To ThymeLeaf");
+        return "index";
     }
 }
+```
 ### index.html (View – inside src/main/resources/templates/):
-
+```html
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Spring MVC</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+
+<div class="container">
     <h1 th:text="${message}">Default Message</h1>
+
+    <button onclick="showMessage()">Click Me</button>
+
+    <button onClick="changeText()">Change Text</button>
+</div>
+
+<!-- Link JS -->
+<script src="/script.js"></script>
+
 </body>
 </html>
-
+```
 ### application.properties:
- server.port=8081
+```
+server.port=4000
+```
+### Output : 
+<img width="1915" height="567" alt="image" src="https://github.com/user-attachments/assets/48564ef0-e627-434f-8dbb-3857e111aa60" />
+<img width="1899" height="539" alt="image" src="https://github.com/user-attachments/assets/f1cb2d96-4cb3-4561-be4c-09ea350db959" />
+<img width="1915" height="498" alt="image" src="https://github.com/user-attachments/assets/2b76aa8f-fb27-4d7c-bffa-dc02df873627" />
+
 
 
