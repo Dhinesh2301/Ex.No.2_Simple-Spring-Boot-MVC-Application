@@ -14,7 +14,7 @@ To develop a Simple Spring Boot MVC (Model-View-Controller) Application that use
 8. Add basic CSS styles (inside HTML or separate file)  
 9. Use Thymeleaf to display data  
 10. Run the application  
-11. Open http://localhost:8080/ in browser  
+11. Open http://localhost:4000/ in browser  
 ## PROGRAM
 ```
 spring-mvc-demo/
